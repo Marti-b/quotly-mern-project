@@ -40,13 +40,17 @@ function App() {
   
   return (
     <>
-
-
+      
+      <Router>
       <h1>MERN App!</h1>
-      <AddText />
-      <Text />
-      <ShowTextes quotes = {quotesList} />
+
+      <AddText path="/" />
+      <Text path="/quote/:id"/>
+      <ShowTextes quotes = {quotesList} path="/"/>
+      
       {/* <p>Data from server: {data}</p> */}
+      </Router>
+      
 
 
      
