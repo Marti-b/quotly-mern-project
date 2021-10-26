@@ -1,7 +1,13 @@
-function Text(){
+function Text(props){
+    console.log("Single quote Text component: ", props)
+
+    const singleQuote = props.getQuote(props.id)
+    console.log("See if it finds the quote:", singleQuote)
     return(
         <>
-        <h3>Component of individual Text</h3>
+         <p>{singleQuote.id}</p>
+         <p>{singleQuote.text}</p>
+         <p>{singleQuote.source}</p>
         </>
     )
 }

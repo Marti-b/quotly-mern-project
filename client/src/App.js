@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Router} from "@reach/router";
+import {Link, Router} from "@reach/router";
 
 import AddText from "./AddText";
 import Text from "./Text";
@@ -15,10 +15,10 @@ function App() {
 
   const [quotesList, setList] = useState([
     { 
-      "id": 1,"text": "This is the test quote and the first in the line","source": "quote.com"
+      id: 1, text: "This is the test quote and the first in the line", source: "quote.com"
     },
     { 
-      "id": 2,"text": "Test2","source": "quote.com"
+      id: 2, text: "Test2", source: "quote.com"
     }
   ])
   
@@ -37,19 +37,23 @@ function App() {
   // useEffect(() => {
   //   setData([listOfQuotes])
   // })
-  
+  function getQuote(id){
+    let quote = quotesList.find(x => x.id.toString() === id);
+    return quote;
+  }
   return (
     <>
-      
-      <Router>
-      <h1>MERN App!</h1>
-
-      <AddText path="/" />
-      <Text path="/quote/:id"/>
+          <h1>MERN App!</h1>
+      <nav>
+        <Link to="/"></Link>
+      </nav>
+       <Router> 
+       {/* <AddText path="/" />  */}
+      <Text getQuote={getQuote}  path="/quote/:id"/>
       <ShowTextes quotes = {quotesList} path="/"/>
-      
+
       {/* <p>Data from server: {data}</p> */}
-      </Router>
+       </Router> 
       
 
 
