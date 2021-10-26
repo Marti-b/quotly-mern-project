@@ -14,14 +14,14 @@ function App() {
   //const [data, setData] = useState("No data :(");
 
   const [quotesList, setList] = useState([
-    { 
+    {
       id: 1, text: "This is the test quote and the first in the line", source: "quote.com"
     },
-    { 
+    {
       id: 2, text: "Test2", source: "quote.com"
     }
   ])
-  
+
 
   // useEffect(() => {
   //   async function getData() {
@@ -34,30 +34,31 @@ function App() {
   //   getData();
   // }, []);
 
-  // useEffect(() => {
-  //   setData([listOfQuotes])
-  // })
+
   function getQuote(id){
     let quote = quotesList.find(x => x.id.toString() === id);
     return quote;
   }
   return (
     <>
-          <h1>MERN App!</h1>
-      <nav>
-        <Link to="/"></Link>
-      </nav>
-       <Router> 
-       {/* <AddText path="/" />  */}
-      <Text getQuote={getQuote}  path="/quote/:id"/>
-      <ShowTextes quotes = {quotesList} path="/"/>
+  
+      <h1>MERN App!</h1>
+        <nav>
+          <Link to="/">Home</Link>
+        </nav>
 
-      {/* <p>Data from server: {data}</p> */}
-       </Router> 
-      
+      <div className="App">
+        <Router>
 
+        <ShowTextes quotes={quotesList} path="/"/>
 
-     
+        <AddText path="/" />
+
+        <Text getQuote={getQuote}  path="/quote/:id"/>
+        {/* <p>Data from server: {data}</p> */}
+
+        </Router>
+    </div>
     </>
   );
 }
