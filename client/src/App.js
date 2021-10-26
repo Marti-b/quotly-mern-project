@@ -13,7 +13,7 @@ function App() {
   //Functions as a container to hold & update the data from the server
   //const [data, setData] = useState("No data :(");
 
-  const [quotesList, setList] = useState([
+  const [quotesList, setData] = useState([
     {
       id: 1, text: "This is the test quote and the first in the line", source: "quote.com"
     },
@@ -34,11 +34,29 @@ function App() {
   //   getData();
   // }, []);
 
+  //   useEffect(() => {
+  //     const url = `${API_URL}/`;
+  //     fetch(url)
+  //     .then(response => response.json())
+  //     .then((data) =>{
+  //       console.log("Data getting from the server: ", data)
+  //       setData(data.quotes)
+  //     });
+  // }, []);
 
   function getQuote(id){
     let quote = quotesList.find(x => x.id.toString() === id);
     return quote;
   }
+  function addText(text, source){
+    const newQuote = {
+      id: quotesList.length + 1, 
+      text:text,
+      source: source
+      };
+      setData([...quotesList, newQuote]);
+  }
+
   return (
     <>
   
@@ -50,15 +68,20 @@ function App() {
       <div className="App">
         <Router>
 
-        <ShowTextes quotes={quotesList} path="/"/>
+        <ShowTextes quotes = {quotesList} path="/">
+       
+        </ShowTextes>
 
-        <AddText path="/" />
+        <AddText addText={addText} path="/add" />
 
         <Text getQuote={getQuote}  path="/quote/:id"/>
         {/* <p>Data from server: {data}</p> */}
 
         </Router>
     </div>
+
+
+
     </>
   );
 }
