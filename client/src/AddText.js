@@ -9,7 +9,7 @@ function AddText(props){
 
     return(
 
-        <div class="add-text">
+        <div className="add-text">
             <h2>Post a quote to the wall</h2>
             <div>
             <label htmlFor="text">Quote: </label>
@@ -37,7 +37,6 @@ function AddText(props){
                 Post it!
             </button>
         </div>
-
-    )
+    );
 }
 export default AddText;
