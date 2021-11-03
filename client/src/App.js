@@ -27,7 +27,7 @@ function App() {
 
 
   function getQuote(id){
-    let quote = quotesList.find(x => x.id.toString() === id);
+    let quote = quotesList.find(x => x._id === id);
     return quote;
   }
   
@@ -48,7 +48,7 @@ function App() {
       .catch((error) => {
         console.error('Error:', error);
       });
-      // setData([...quotesList, newQuote]);
+      
   }
 
   return (
