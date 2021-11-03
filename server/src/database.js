@@ -12,7 +12,8 @@ async function connectDatabase() {
   return mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  });
+  }, 
+  () => console.log('Connected to DB'));
 }
 
 export default connectDatabase;

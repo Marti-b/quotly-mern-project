@@ -1,5 +1,5 @@
 function Text(props){
-    console.log("Single quote Text component: ", props)
+    console.log("Props of what Text component gets: ", props)
 
     const singleQuote = props.getQuote(props.id)
     console.log("See if it finds the quote:", singleQuote)

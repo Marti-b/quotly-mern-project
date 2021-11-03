@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import {Link, Router, useLocation} from "@reach/router";
+import { useEffect, useState } from 'react';
+import {Link, Router} from "@reach/router";
 
 import AddText from "./AddText";
 import Text from "./Text";
@@ -16,36 +16,39 @@ function App() {
   
   useEffect(() => {
     async function getData() {
-      const url = `${API_URL}/quotes`;
+      const url = `${API_URL}/`;
       const response = await fetch(url);
       const data = await response.json();
       console.log("Data getting from the server: ", data)
-      setData(data.quotes);
+      setData(data);
     }
     getData();
   }, []);
 
-  //   useEffect(() => {
-  //     const url = `${API_URL}/`;
-  //     fetch(url)
-  //     .then(response => response.json())
-  //     .then((data) =>{
-  //       console.log("Data getting from the server: ", data)
-  //       setData(data.quotes)
-  //     });
-  // }, []);
 
   function getQuote(id){
     let quote = quotesList.find(x => x.id.toString() === id);
     return quote;
   }
-  function addText(text, source){
-    const newQuote = {
-      id: quotesList.length + 1, 
+  
+  function addText(text, author){
+    const newQuote = { 
       text:text,
-      source: source
-      };
-      setData([...quotesList, newQuote]);
+      author: author
+      }
+      fetch(`${API_URL}/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newQuote)
+      })
+      .then(response => response.json())
+      .then(data => setData([...quotesList, data]))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+      // setData([...quotesList, newQuote]);
   }
 
   return (

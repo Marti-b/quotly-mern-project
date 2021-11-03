@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const quoteSchema = new mongoose.Schema({
     text: {
         type: String,
-        required: true
+        required: true,
+        maxLength: 500
     },
     author: String,
     // comment : {}

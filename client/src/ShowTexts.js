@@ -13,7 +13,7 @@ import { Link } from "@reach/router";
                 <ol>
                 {quotes.map((item) => {
                     return(
-                        <li key={item.id}><Link to={`/quote/${item.id}`}> {item.text}, {item.source}</Link></li>
+                        <li key={item._id}><Link to={`/quote/${item._id}`}> {item.text}, {item.author}</Link></li>
                     )
                })}
                 </ol>
