@@ -1,3 +1,5 @@
+import './App.css';
+
 import { useEffect, useState } from 'react';
 import {Link, Router} from "@reach/router";
 

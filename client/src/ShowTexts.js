@@ -5,18 +5,17 @@ import { Link } from "@reach/router";
     console.log("See what we get for ShowTexts component: ", quotes)
     return(
         <>
-        
          {props.children}
          {
              quotes.length === 0 ? (<p>Loading...</p>) : 
              (
-                <ol>
-                {quotes.map((item) => {
+                <div className="quotes">
+                     {quotes.map((item) => {
                     return(
-                        <li key={item._id}><Link to={`/quote/${item._id}`}> {item.text}, {item.author}</Link></li>
+                        <div className="quoteItem" key={item._id}><Link to={`/quote/${item._id}`}> {item.text}, {item.author}</Link></div>
                     )
                })}
-                </ol>
+                </div>
               
              )
          }

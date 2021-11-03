@@ -8,11 +8,11 @@ function Text(props){
     const singleQuote = props.getQuote(props.id)
     console.log("See if it finds the quote:", singleQuote)
     return(
-        <>
+        <div className="singleQuote">
          <p>{singleQuote._id}</p>
          <p>{singleQuote.text}</p>
          <p>{singleQuote.source}</p>
-        </>
+        </div>
     )
 }
 export default Text;
