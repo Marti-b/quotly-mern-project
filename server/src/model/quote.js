@@ -7,8 +7,11 @@ const quoteSchema = new mongoose.Schema({
         maxLength: 500
     },
     author: String,
-    // comment : {}
-    // like: 0
+     comment : [{
+         username: {type: String, required: true},
+         content: {type: String, required: true}
+     }],
+     //like: 0
 });
 
 const Quote = mongoose.model("Quote", quoteSchema);

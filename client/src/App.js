@@ -6,6 +6,8 @@ import {Link, Router} from "@reach/router";
 import AddText from "./AddText";
 import Text from "./Text";
 import ShowTexts from "./ShowTexts.js";
+import AddComment from './AddComment.js';
+
 
 
 const API_URL = process.env.REACT_APP_API;
@@ -15,6 +17,7 @@ function App() {
  
   //Functions as a container to hold & update the data from the server
   const [quotesList, setData] = useState([]);
+
   
   useEffect(() => {
     async function getData() {
@@ -52,11 +55,32 @@ function App() {
       });
       
   }
+  function addComment(id, name, comment){
+    const newComment = {
+      username: name,
+      content: comment
+    }
+    fetch(`${API_URL}/quote/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newComment)
+    })
+    .then(res => res.json())
+    .then(async quote => {
+      const url = `${API_URL}/`;
+      const response = await fetch(url);
+      const data = await response.json();
+      //console.log("Data getting from the server: ", data)
+      setData(data);
+    })
+  }
 
   return (
     <>
   
-      <h1>Quotr</h1>
+      <h1>Quotly</h1>
         <nav>
           <Link to="/">Home</Link>
         </nav>
@@ -68,9 +92,9 @@ function App() {
           <AddText addText={addText} path="/" />
         </ShowTexts>
        
-
-        <Text getQuote={getQuote}  path="/quote/:id"/>
-        {/* <p>Data from server: {data}</p> */}
+        <Text getQuote={getQuote} path="/quote/:id">
+          <AddComment addComment={addComment}  path="/"/>
+        </Text>
 
         </Router>
     </div>

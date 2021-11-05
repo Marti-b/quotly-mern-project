@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function AddText(props){
-
-    const {addText} = props
+    console.log("Add text: ", props);
+    const {addText} = props;
 
     const [text, setQuote] = useState("");
     const [source, setSource] = useState("");
