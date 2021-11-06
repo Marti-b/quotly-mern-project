@@ -1,7 +1,7 @@
 import { Link } from "@reach/router";
 
  function ShowTexts(props){
-   let quotes = props.quotes 
+   let quotes = props.quotes
     return(
         <>
          {props.children}
@@ -13,8 +13,6 @@ import { Link } from "@reach/router";
                     return(
                         <div className="quoteItem" key={item._id}>
                             <Link to={`/quote/${item._id}`}> {item.text}, {item.author}</Link>
-                            <div>Number of likes:</div>
-                            <div>Number of comments: </div>
                         </div>
                        
                     )

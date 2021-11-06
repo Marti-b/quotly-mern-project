@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function AddComment(props){
-    console.log("Props of Addcomment:", props)
+    // console.log("Props of Addcomment:", props)
 
     const [name, setName] = useState("");
     const [content, setComment] = useState("");

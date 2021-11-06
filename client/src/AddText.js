@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function AddText(props){
-    console.log("Add text: ", props);
+    // console.log("Add text: ", props);
     const {addText} = props;
 
     const [text, setQuote] = useState("");
@@ -21,7 +21,7 @@ function AddText(props){
             />
             </div>
             <div>
-            <label htmlFor="source">Source: </label>
+            <label htmlFor="source">Author: </label>
             <input
             name="text"
             id="text"

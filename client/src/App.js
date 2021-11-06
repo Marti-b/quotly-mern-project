@@ -10,6 +10,7 @@ import AddComment from './AddComment.js';
 
 
 
+
 const API_URL = process.env.REACT_APP_API;
 
 
@@ -72,14 +73,31 @@ function App() {
       const url = `${API_URL}/`;
       const response = await fetch(url);
       const data = await response.json();
-      //console.log("Data getting from the server: ", data)
+    
+      setData(data);
+    })
+  }
+  function addLike(id){
+    const qoute = getQuote(id);
+    fetch(`${API_URL}/quote/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( {...quotesList, like: qoute.like +1})
+    })
+    .then(res => res.json())
+    .then(async quote => {
+      const url = `${API_URL}/`;
+      const response = await fetch(url);
+      const data = await response.json();
+    
       setData(data);
     })
   }
 
   return (
     <>
-  
       <h1>Quotly</h1>
         <nav>
           <Link to="/">Home</Link>
@@ -92,8 +110,9 @@ function App() {
           <AddText addText={addText} path="/" />
         </ShowTexts>
        
-        <Text getQuote={getQuote} path="/quote/:id">
+        <Text getQuote={getQuote} addLike={addLike} path="/quote/:id">
           <AddComment addComment={addComment}  path="/"/>
+          {/* <AddLike addLike={addLike} path="/addLike/:id"/> */}
         </Text>
 
         </Router>

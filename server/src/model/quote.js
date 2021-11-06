@@ -11,7 +11,7 @@ const quoteSchema = new mongoose.Schema({
          username: {type: String, required: true},
          content: {type: String, required: true}
      }],
-     //like: 0
+     like: {type: Number}
 });
 
 const Quote = mongoose.model("Quote", quoteSchema);
